@@ -27,6 +27,11 @@
  * 
  **************************************************************************/
 
+#if !defined(_RWSTD_STRICT_HEADERS)
+#  include <iosfwd>
+#  include <algorithm>
+#endif   // !_RWSTD_STRICT_HEADERS
+
 #ifndef _RWSTD_OSTREAM_INCLUDED
 #define _RWSTD_OSTREAM_INCLUDED
 
@@ -595,5 +600,5 @@ _RWSTD_INSTANTIATE_2 (class _RWSTD_TI_EXPORT
 #  include <rw/_stringio.h>
 #endif   // _RWSTD_STRING_INSERTER_INCLUDED
 
-
 #endif   // _RWSTD_OSTREAM_INCLUDED
+

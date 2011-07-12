@@ -40,6 +40,10 @@
  *
  **************************************************************************/
 
+#if !defined(_RWSTD_STRICT_HEADERS)
+#  include <cstdlib>
+#endif   // !_RWSTD_STRICT_HEADERS
+
 #ifndef _RWSTD_VECTOR_INCLUDED
 #define _RWSTD_VECTOR_INCLUDED
 

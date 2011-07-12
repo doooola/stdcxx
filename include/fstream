@@ -27,6 +27,10 @@
  * 
  **************************************************************************/
 
+#if !defined(_RWSTD_STRICT_HEADERS)
+#  include <iosfwd>
+#endif   // !_RWSTD_STRICT_HEADERS
+
 #ifndef _RWSTD_FSTREAM_INCLUDED
 #define _RWSTD_FSTREAM_INCLUDED
 
