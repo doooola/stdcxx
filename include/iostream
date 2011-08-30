@@ -37,6 +37,7 @@
 #include <cctype>
 #include <ios>
 #include <cstdlib>
+#include <functional>
 #endif // _RWSTD_STRICT_HEADERS
 
 #include <rw/_defs.h>
