@@ -499,8 +499,8 @@ __rw_get_timepunct (const __rw_facet *pfacet, int flags, _RWSTD_SIZE_T inx)
 #undef ENTRY
 #define ENTRY(item, mem1, mem2)   {                                      \
     item,                                                                \
-    { OFF (__rw_time_t, __rw_time_t::mem1) / sizeof (_RWSTD_UINT32_T),   \
-      OFF (__rw_time_t, __rw_time_t::mem2) / sizeof (_RWSTD_UINT32_T) }  \
+    { OFF (__rw_time_t, mem1) / sizeof (_RWSTD_UINT32_T),   \
+      OFF (__rw_time_t, mem2) / sizeof (_RWSTD_UINT32_T) }  \
   }
 
         // each entry contains an `nl_item' value followed by the offset
