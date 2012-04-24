@@ -48,7 +48,33 @@
 #include <loc/_num_put.h>
 
 #include <rw/_basic_ios.h>
-#include <rw/_ioinsert.h>
+
+_RWSTD_NAMESPACE (__rw) { 
+  _EXPORT
+  template <class _CharT, class _Traits, class _NativeType>
+  _STD::basic_ostream<_CharT, _Traits>&
+  __rw_insert (_STD::basic_ostream<_CharT, _Traits> &__strm,
+               _NativeType                           __val);
+
+  template <class _CharT, class _Traits>
+  inline _RWSTD_STREAMSIZE
+  __rw_sputn (_STD::basic_ostream<_CharT, _Traits> &__strm,
+              const _CharT *__s, _RWSTD_STREAMSIZE __len, __rw_true_t);
+
+  template <class _CharT, class _Traits>
+  inline _RWSTD_STREAMSIZE
+  __rw_sputn (_STD::basic_ostream<_CharT, _Traits> &__strm,
+              const char *__s, _RWSTD_STREAMSIZE __len, __rw_false_t);
+
+  _EXPORT
+  template<class _CharT, class _Traits, class _StringT>
+  _STD::basic_ostream<_CharT, _Traits>&
+  __rw_insert (_STD::basic_ostream<_CharT, _Traits> &__strm,
+               const _StringT                       *__s,
+               _RWSTD_STREAMSIZE                     __len,
+               _RWSTD_STREAMSIZE                     __width);
+} // namespace __rw
+
 #include <rw/_defs.h>
 
 
@@ -600,5 +626,8 @@ _RWSTD_INSTANTIATE_2 (class _RWSTD_TI_EXPORT
 #  include <rw/_stringio.h>
 #endif   // _RWSTD_STRING_INSERTER_INCLUDED
 
+#include <rw/_ioinsert.h>
+
 #endif   // _RWSTD_OSTREAM_INCLUDED
+
 

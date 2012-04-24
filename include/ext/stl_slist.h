@@ -260,7 +260,8 @@ protected:
     _Slist_node_base* __next_next = __next->_M_next;
     __pos->_M_next = __next_next;
     destroy(&__next->_M_data);
-    _M_put_node(__next);
+ _Slist_alloc_base<_Tp, _Alloc,
+                             _Alloc_traits<_Tp, _Alloc>::_S_instanceless>::_M_put_node(__next);
     return __next_next;
   }
   _Slist_node_base* _M_erase_after(_Slist_node_base*, _Slist_node_base*);
@@ -307,7 +308,7 @@ _Slist_base<_Tp,_Alloc>::_M_erase_after(_Slist_node_base* __before_first,
     _Slist_node<_Tp>* __tmp = __cur;
     __cur = (_Slist_node<_Tp>*) __cur->_M_next;
     destroy(&__tmp->_M_data);
-    _M_put_node(__tmp);
+    _Slist_base<_Tp,_Alloc>::_M_put_node(__tmp);
   }
   __before_first->_M_next = __last_node;
   return __last_node;
