@@ -1051,16 +1051,16 @@ inline long double tanh (long double __x)
 
 #endif   // _RWSTD_NO_LONG_DOUBLE
 
-template <typename __T> int isfinite(__T __x) {
-    return !isnan(__x) && !isinf(__x);
-}
-
 template <typename __T> int isinf(__T __x) {
     return __builtin_isinf(__x);
 }
 
 template <typename __T> int isnan(__T __x) {
     return __builtin_isnan(__x);
+}
+
+template <typename __T> int isfinite(__T __x) {
+    return !isnan(__x) && !isinf(__x);
 }
 
 inline int isnormal(float __x) {
