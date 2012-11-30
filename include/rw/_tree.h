@@ -152,11 +152,6 @@ public:
     __rw_tree_iter (const _C_iterator &__rhs)
         : _C_node (__rhs._C_node) { }
 
-    template <class _Ptr, class _Ref>
-    __rw_tree_iter (const __rw_tree_iter<_TypeT, _DiffT, _Ptr, _Ref, _Node>&
-                    __rhs)
-        : _C_node (__rhs._C_node) { }
-
     __rw_tree_iter (_C_link_t __lnk)
         : _C_node (__lnk) {}        
 
