@@ -30,6 +30,9 @@
 #ifndef _RWSTD_STDEXCEPT_INCLUDED
 #define _RWSTD_STDEXCEPT_INCLUDED
 
+#if !defined(_RWSTD_STRICT_HEADERS)
+#  include <new>
+#endif   // !_RWSTD_STRICT_HEADERS
 
 #include <rw/_exception.h>   // for __rw_exception and string
 #include <rw/_defs.h>
