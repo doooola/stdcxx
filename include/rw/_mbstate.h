@@ -132,8 +132,9 @@ _USING (::mbstate_t);
 /*** Linux/glibc **********************************************************/
 
      // define __mbstate_t at file scope (see /usr/include/wchar.h)
-#    ifndef __mbstate_t_defined
+#    if !defined (__mbstate_t_defined) && !defined (____mbstate_t_defined)
 #      define __mbstate_t_defined 1
+#      define ____mbstate_t_defined 1
 
 extern "C" {
 
