@@ -131,10 +131,15 @@ _USING (::mbstate_t);
 #  if defined (_RWSTD_OS_LINUX)
 /*** Linux/glibc **********************************************************/
 
+#    include <features.h>  /* For __GLIBC__ and __GLIBC_MINOR__ */
+
      // define __mbstate_t at file scope (see /usr/include/wchar.h)
 #    if !defined (__mbstate_t_defined) && !defined (____mbstate_t_defined)
-#      define __mbstate_t_defined 1
-#      define ____mbstate_t_defined 1
+#      if __GLIBC__ >= 2 && __GLIBC_MINOR__ >= 16
+#        define ____mbstate_t_defined 1
+#      else
+#        define __mbstate_t_defined 1
+#      endif
 
 extern "C" {
 
