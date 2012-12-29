@@ -332,7 +332,7 @@ _C_copyfmt (const ios_base &rhs,
     }
 
     // copy all but masked flags(), leave masked flags alone
-    _C_fmtfl = fmtfl & flagmask | _C_fmtfl & ~flagmask;
+    _C_fmtfl = (fmtfl & flagmask) | (_C_fmtfl & ~flagmask);
     _C_prec  = prec;
     _C_wide  = wide;
     _C_loc   = loc;
