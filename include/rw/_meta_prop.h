@@ -425,12 +425,12 @@ struct __rw_is_trivial_impl
     typedef typename __rw_remove_cv<_TypeU>::type _NoCV_TypeU;
 
     enum { _C_value =    __rw_is_scalar<_NoCV_TypeU>::value
-                      || __rw_has_trivial_ctor<_NoCV_TypeU>::value
+                      || (__rw_has_trivial_ctor<_NoCV_TypeU>::value
                       && __rw_has_trivial_copy<_NoCV_TypeU>::value
                       && __rw_has_trivial_dtor<_NoCV_TypeU>::value
                       && __rw_has_trivial_assign<_NoCV_TypeU>::value
                       && (   __rw_is_class<_NoCV_TypeU>::value
-                          || __rw_is_union<_NoCV_TypeU>::value) };
+                          || __rw_is_union<_NoCV_TypeU>::value)) };
 };
 
 template <class _TypeT>

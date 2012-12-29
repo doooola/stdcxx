@@ -545,7 +545,7 @@ __rw_get_num (void *pval, const char *buf, int type, int flags,
 
             _RWSTD_ASSERT (0 != end);
 
-            if ('.' == *end || end == buf && '.' == buf [1]) {
+            if ('.' == *end || (end == buf && '.' == buf [1])) {
                 // on failure caused by an unrecognized decimal point
                 // set teporarily the global locale to "C" and reparse
                 __rw_setlocale loc ("C", _RWSTD_LC_NUMERIC);
@@ -649,7 +649,7 @@ __rw_get_num (void *pval, const char *buf, int type, int flags,
 
             _RWSTD_ASSERT (0 != end);
 
-            if ('.' == *end || end == buf && '.' == buf [1]) {
+            if ('.' == *end || (end == buf && '.' == buf [1])) {
                 // on failure caused by an unrecognized decimal point
                 // set teporarily the global locale to "C" and reparse
                 __rw_setlocale loc ("C", _RWSTD_LC_NUMERIC);
@@ -728,7 +728,7 @@ __rw_get_num (void *pval, const char *buf, int type, int flags,
 
             _RWSTD_ASSERT (0 != end);
 
-            if ('.' == *end || end == buf && '.' == buf [1]) {
+            if ('.' == *end || (end == buf && '.' == buf [1])) {
                 // on failure caused by an unrecognized decimal point
                 // set teporarily the global locale to "C" and reparse
                 __rw_setlocale loc ("C", _RWSTD_LC_NUMERIC);
@@ -794,9 +794,9 @@ __rw_get_num (void *pval, const char *buf, int type, int flags,
     // note that grouping is optional and parsing fails due to bad format
     // only if the positions thousands_sep's do not match those specified
     // by grouping; in such cases, the value is still stored
-    if (   *grouping && ngroups > 1
-        && 0 > __rw_check_grouping (groups, ngroups, grouping, ngroupings)
-        || !*grouping && ngroups > 1)
+    if (  (*grouping && ngroups > 1
+        && 0 > __rw_check_grouping (groups, ngroups, grouping, ngroupings))
+        || (!*grouping && ngroups > 1))
         err |= _RWSTD_IOS_FAILBIT;
 
     return err;

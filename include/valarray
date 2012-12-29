@@ -2322,7 +2322,7 @@ valarray<_TypeT>::operator= (const gslice_array<_TypeT>& sl_ar)
     _RWSTD_SIZE_T __i = __sl.next_ind();
     _RWSTD_SIZE_T __cpt = 0;
 
-    while( !__sl.is_reseted() || !__cpt && __maxinx )
+    while( !__sl.is_reseted() || (!__cpt && __maxinx ))
     {
       __tmp[__cpt] = (*(sl_ar.get_ref_mem_array()))[__i];
       __i= __sl.next_ind();

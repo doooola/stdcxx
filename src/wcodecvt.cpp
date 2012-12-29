@@ -769,8 +769,8 @@ __rw_libstd_do_out (const wchar_t             *from,
             // doesn't generate signed/unsigned compiler warnings
             const WIntT wi = _RWSTD_STATIC_CAST (WIntT, *from_next);
 
-            if (   WIntT (0xd800U) <= wi && wi <= WIntT (0xdfffU)
-                || WIntT (0xfffeU) <= wi && wi <= WIntT (0xffffU)) {
+            if (   (WIntT (0xd800U) <= wi && wi <= WIntT (0xdfffU))
+                || (WIntT (0xfffeU) <= wi && wi <= WIntT (0xffffU))) {
                 res = _STD::codecvt_base::error;
                 break;
             }

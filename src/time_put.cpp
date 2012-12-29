@@ -1845,10 +1845,10 @@ __rw_get_era (const __rw_time_t *ptime, const tm *tmb)
         const int e = !b;                 // end index
 
         // check to see if the specified date belongs to the era
-        if (   year > pera->year [b] && year < pera->year [e]
+        if (  (year > pera->year [b] && year < pera->year [e])
             || (   (year == pera->year [b] || year == pera->year [e])
-                && (   tmb->tm_mon > pera->month [b]
-                    && tmb->tm_mon < pera->month [e]
+                && (  (tmb->tm_mon > pera->month [b]
+                    && tmb->tm_mon < pera->month [e])
                     || (    (   tmb->tm_mon == pera->month [b]
                              || tmb->tm_mon == pera->month [e])
                         && tmb->tm_mday >= pera->day [b]
@@ -1889,7 +1889,7 @@ __rw_get_zone_off (const char *var, const char **var_end)
         offset = *var++ - '0';
 
         if (ISDIGIT (*var)) {
-            if (offset < 2 || *var >= '0' && *var <= '4') {
+            if (offset < 2 || (*var >= '0' && *var <= '4')) {
                 // add offset in hours
                 offset = offset * 10 + *var++ - '0';
             }
@@ -1985,7 +1985,7 @@ __rw_get_zone (__rw_time_put_data &tpd, const char *var, int isdst)
         for (; ISALPHA (*var); ++var);
 
         if (   var == stdbeg
-            || *var && '+' != *var && '-' != *var && !ISDIGIT (*var))
+            || (*var && '+' != *var && '-' != *var && !ISDIGIT (*var)))
             goto use_tzset;
     }
 
@@ -2005,7 +2005,7 @@ __rw_get_zone (__rw_time_put_data &tpd, const char *var, int isdst)
         }
 
         if (   var == dstbeg
-            || *var && '+' != *var && '-' != *var && !ISDIGIT (*var))
+            || (*var && '+' != *var && '-' != *var && !ISDIGIT (*var)))
             goto use_tzset;
 
         tpd.val = __rw_get_zone_off (var, &var);
@@ -2167,9 +2167,9 @@ __rw_get_time_put_data (__rw_time_put_data &tpd,
 
         if (   !tpd.fmt
 #ifndef _RWSTD_NO_WCHAR_T
-            ||  wide && !*_RWSTD_STATIC_CAST (const wchar_t*, tpd.fmt)
+            || (wide && !*_RWSTD_STATIC_CAST (const wchar_t*, tpd.fmt))
 #endif   // _RWSTD_NO_WCHAR_T
-            || !wide && !*_RWSTD_STATIC_CAST (const char*, tpd.fmt))
+            || (!wide && !*_RWSTD_STATIC_CAST (const char*, tpd.fmt)))
             tpd.fmt = ptime->d_t_fmt (wide);
 
         _RWSTD_ASSERT (0 != tpd.fmt);
@@ -2502,9 +2502,9 @@ __rw_get_time_put_data (__rw_time_put_data &tpd,
 
         if (   !tpd.fmt
 #ifndef _RWSTD_NO_WCHAR_T
-            ||  wide && !*_RWSTD_STATIC_CAST (const wchar_t*, tpd.fmt)
+            || (wide && !*_RWSTD_STATIC_CAST (const wchar_t*, tpd.fmt))
 #endif   // _RWSTD_NO_WCHAR_T
-            || !wide && !*_RWSTD_STATIC_CAST (const char*, tpd.fmt))
+            || (!wide && !*_RWSTD_STATIC_CAST (const char*, tpd.fmt)))
             tpd.fmt = ptime->d_fmt (wide);
 
         break;
@@ -2518,9 +2518,9 @@ __rw_get_time_put_data (__rw_time_put_data &tpd,
 
         if (   !tpd.fmt
 #ifndef _RWSTD_NO_WCHAR_T
-            ||  wide && !*_RWSTD_STATIC_CAST (const wchar_t*, tpd.fmt)
+            || (wide && !*_RWSTD_STATIC_CAST (const wchar_t*, tpd.fmt))
 #endif   // _RWSTD_NO_WCHAR_T
-            || !wide && !*_RWSTD_STATIC_CAST (const char*, tpd.fmt))
+            || (!wide && !*_RWSTD_STATIC_CAST (const char*, tpd.fmt)))
             tpd.fmt = ptime->t_fmt (wide);
 
         break;
