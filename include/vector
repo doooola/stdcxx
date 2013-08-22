@@ -227,7 +227,15 @@ public:
     bool empty () const {
         return _C_alloc._C_begin == _C_alloc._C_end;
     }
-    
+
+    const value_type * data() const {
+        return _C_alloc._C_begin;
+    }
+
+    value_type * data() {
+        return _C_alloc._C_begin;
+    }
+
     void reserve (size_type);
 
     reference operator[] (size_type);
