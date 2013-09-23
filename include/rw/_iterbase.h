@@ -299,7 +299,7 @@ inline void __distance (const _InputIterator &__first,
                         _Distance            &__n,
                         input_iterator_tag)
 {
-    for (_InputIterator __it = __first; !(__it == __last); ++__it)
+    for (_InputIterator __it = __first; __it != __last; ++__it)
         ++__n;
 }
 
