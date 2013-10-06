@@ -169,6 +169,7 @@ _C_insert_1 (const iterator &__it, const_reference __x)
         if (__it < end ()) {
 
             const pointer __end = _C_alloc._C_end;
+            _TypeT __x_copy = __x;
 
             // construct a copy of the last element in the range [it, end)
             // in the uninitialized slot just past the end of the range
@@ -180,7 +181,7 @@ _C_insert_1 (const iterator &__it, const_reference __x)
             _STD::copy_backward (__it, end () - 2, __end);
 
             // overwrite the element at the given position
-            *__it = __x;
+            *__it = __x_copy;
         }
         else {
             // construct a copy of the value to be inserted
